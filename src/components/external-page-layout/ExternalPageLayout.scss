@@ -1,0 +1,74 @@
+.external-page-layout {
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+}
+
+header {
+  top:0;
+  left:0;
+  font-size: 25px;
+  height: 59px;
+  width: 100%;
+  font-weight: lighter;
+  text-align: center;
+  background: white;
+  position:fixed;
+  display:flex !important;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  .logoLine {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    img {
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: -10px;
+      height: 30px;
+    }
+    .appHeader {
+      font-size: 16px;
+      color:#484848;
+      font-family: "Kiva Grotesk Book";
+    }
+  }
+  .header-buttons {
+    margin-right:20px;
+  }
+}
+
+.core-layout {
+  margin-top: 70px;
+  height: calc(100vh - 70px);
+}
+
+.appNavBar {
+  flex-direction: row;
+  display:flex;
+  width: 400px;
+}
+
+footer {
+  position:fixed;
+  bottom:0;
+  right:0;
+  margin:7px;
+  border-radius: 5px;
+  background: #0055dd;
+  color:white;
+  opacity:0.8;
+  width: 150px;
+  font-size: 8px;
+  font-weight: lighter;
+  text-align: center;
+  line-height: 30px;
+  border-bottom:1px solid #f2f2f2;
+  &:hover {
+    opacity:1;
+  }
+}

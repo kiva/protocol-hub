@@ -1,0 +1,54 @@
+.registration-page {
+  margin: 100px 50px;
+  height: 400px;
+}
+.registration-table {
+  background-color: #FFFFFF;
+}
+.MuiDataGrid-row.Mui-even {
+    background-color: #F4F4F4;
+}
+.action-link {
+  cursor: pointer;
+  color: #307BCC !important;
+}
+
+.actions-bar {
+  margin-top: 20px;
+}
+
+Button.MuiButton-root.primary-button {
+  background-color: #5086EC;
+  color: #FFFFFF;
+  text-transform: none;
+  font-weight: 400;
+  border-radius: 0;
+  border: 1px solid #EDEDED;
+  margin-right: 5px;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+  &[disabled] {
+    background-color: #8ca8dd;
+    border: 1px solid #EDEDED;
+    cursor: not-allowed;
+  }
+}
+Button.MuiButton-root.secondary-button {
+  border: 1px solid #EDEDED;
+  text-transform: none;
+  font-weight: 400;
+  border-radius: 0;
+  &:focus {
+    outline: none;
+  }
+}
+
+button:focus, input[type="button"]:focus {
+  outline: none !important;
+}
+
+.registry-page-field {
+  margin-bottom: 15px !important;
+}

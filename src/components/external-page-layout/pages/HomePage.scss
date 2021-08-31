@@ -1,0 +1,65 @@
+.action-workflow-iframe {
+  width: 100%;
+  border: none;
+  height: 100vh;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  height: 70vh;
+
+  .app-link {
+    display:flex;
+    flex-direction: column;
+
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+    height: 228px;
+    width:220px;
+    background:white;
+    margin: 20px;
+    text-align: center;
+    font-size: 20px;
+    color:black;
+    border-radius: 10px;
+    text-decoration: none;
+    border:3px solid transparent;
+
+    span.title {
+      display: block;
+      font-weight: bolder;
+      font-size:18px;
+      color:black;
+      font-family: 'Kiva Grotesk Medium';
+    }
+
+    span.description {
+      display: block;
+      text-align: left;
+      font-weight: normal;
+      font-size:16px;
+      margin: 10px 20px;
+      color:#484848;
+      font-family: 'Kiva Grotesk Book';
+    }
+
+    img {
+      margin-bottom: 30px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color:#004FD4;
+      border:3px solid #004FD4;
+    }
+  }
+
+}

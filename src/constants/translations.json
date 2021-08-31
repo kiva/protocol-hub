@@ -1,0 +1,11 @@
+{
+  "ok": "OK",
+  "cancel": "Cancel",
+  "noData": "No data",
+  "revoke": "Revoke Credential",
+  "renew": "Renew",
+  "areYouSureRevoke": "Are you sure you want to revoke this credential?",
+  "credentialDetails": "Credential Details",
+  "registrationEntries": "Registration Entries",
+  "photoFailedToRender": "Photo failed to render."
+}

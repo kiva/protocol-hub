@@ -1,0 +1,30 @@
+Button.MuiButton-root.primary-button {
+  background-color: #5086EC;
+  color: #FFFFFF;
+  text-transform: none;
+  font-weight: 400;
+  border-radius: 0;
+  border: 1px solid #EDEDED;
+  margin-right: 5px;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+  &[disabled] {
+    background-color: #6695ec;
+    border: 1px solid #EDEDED;
+  }
+}
+Button.MuiButton-root.secondary-button {
+  border: 1px solid #EDEDED;
+  text-transform: none;
+  font-weight: 400;
+  border-radius: 0;
+  &:focus {
+    outline: none;
+  }
+}
+
+button:focus, input[type="button"]:focus {
+  outline: none;
+}
