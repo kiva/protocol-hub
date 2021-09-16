@@ -10,13 +10,13 @@ import Listen from "../../../utils/Listen";
 import _ from "lodash";
 
 type AppOption =
-{
-  icon: string;
-  title: string;
-  subTitle: string;
-  url?: string,
-  route?: string,
-}
+  {
+    icon: string;
+    title: string;
+    subTitle: string;
+    url?: string,
+    route?: string,
+  }
 
 const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
   const [modalBodyContent, setModalBodyContent] = React.useState<any>("");
@@ -59,7 +59,7 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
         let poll: any = setInterval(() => {
           pollOpenedWindow(w, target);
         }, 1000);
-  
+
         // Setting up a listener for a response from the opened window
         // If the data satisfies our requirements, we clear the "poll" interval
         Listen(window, "message", e => {
@@ -71,7 +71,7 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
             }, target);
           }
         });
-  
+
         // The listener's set up? Let's send our first postMessage
         pollOpenedWindow(w, target);
       }
@@ -85,7 +85,7 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
     return <>
       <a className="app-link"
          onClick={handleOptionClick(option)}>
-        <img src={imageUrl} />
+        <img src={imageUrl}/>
         <span className="title">{option.title}</span>
         <span className="description">{option.subTitle}</span>
       </a>
@@ -102,9 +102,9 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
   }
 
   const handleOptionClick = (option: AppOption) => () => {
-    if(option.route) {
+    if (option.route) {
       history.push("/registry");
-    } else if(option.url) {
+    } else if (option.url) {
       if (store.getState().session.token) {
         openAndSendMessage(option.url);
       } else {
@@ -117,24 +117,17 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
     <div className="home-page">
       {hubOptions}
       {renderModal()}
-      <a className="app-link" onClick={goToRegistry}>
-        <span className="title">Registry</span>
-        <span className="description">Manage the list of individuals.</span>
-      </a>
-      <div className="app-link"
-         onClick={()=> {
-           handleOpen(CONSTANTS.externalUrls.issuer);
-         }}>
-        <span className="title">Issue Credentials</span>
-        <span className="description">Register individuals</span>
-      </div>
-      <div className="app-link"
-         onClick={()=> {
-           handleOpen(CONSTANTS.externalUrls.verifier);
-         }}>
-        <span className="title">Verify</span>
-        <span className="description">Verify the individual’s credentials</span>
-      </div>
+      {appConfig.actions.map(x => {
+        return <div className="app-link"
+                    onClick={() => {
+                      if (x.url) {
+                        openAndSendMessage(x.url);
+                      }
+                    }}>
+          <span className="title">{x.title}</span>
+          <span className="description">{x.subTitle}</span>
+        </div>
+      })}
     </div>
   );
 }

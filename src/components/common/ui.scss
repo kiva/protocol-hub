@@ -1,28 +1,4 @@
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,700&display=swap');
-
-@font-face {
-  font-family: 'Kiva Grotesk Bold';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/PostGrotesk-Bold.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Kiva Grotesk Book';
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/PostGrotesk-Book.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Kiva Grotesk Medium';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/PostGrotesk-Medium.woff') format('woff');
-}
 
 .hidden {
   display: none !important;

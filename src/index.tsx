@@ -7,22 +7,10 @@ import {getSession} from "./services/authentication";
 import {Session} from "./services/models/session";
 import Auth0ProviderWithHistory from "./components/Auth0ProviderWithHistory";
 import {BrowserRouter as Router} from "react-router-dom";
-import firebase from 'firebase';
 
 export const store = configureStore({
   session: getSession() || ({} as Session),
 });
-
-var firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
-};
-export const Kernel = firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <Router>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./ExternalPageLayout.scss";
 import HomePage from "./pages/HomePage";
-import FrameworkHost from "./pages/registry-page/RegistryPage";
+import FrameworkHost from "./pages/frameworks/FrameworkHost";
 
 export default class ExternalPageLayout extends Component {
   componentDidMount() {
