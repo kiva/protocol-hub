@@ -7,5 +7,6 @@
   "areYouSureRevoke": "Are you sure you want to revoke this credential?",
   "credentialDetails": "Credential Details",
   "registrationEntries": "Registration Entries",
+  "transactionHistory": "Transaction History",
   "photoFailedToRender": "Photo failed to render."
 }

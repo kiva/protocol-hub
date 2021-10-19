@@ -21,5 +21,17 @@ export const appConfig = {
       url: "https://pro-cluster-kiva-verify.web.app",
       icon: "docs.svg",
     },
+    {
+      title: "Transaction History",
+      subTitle: "View Transaction History",
+      route: "/transactionHistory",
+      icon: "docs.svg",
+    },
+    {
+      title: "Registry",
+      subTitle: "View Registry",
+      route: "/registry",
+      icon: "docs.svg",
+    },
   ]
 }

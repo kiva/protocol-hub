@@ -22,16 +22,6 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
   const [modalBodyContent, setModalBodyContent] = React.useState<any>("");
   const [modalOpen, setModalOpen] = React.useState<any>(false);
 
-
-  const pollOpenedWindow = (w: Window | null, tgt: string) => {
-    w?.postMessage("are you set?", tgt);
-  }
-
-  const goToRegistry = () => {
-    history.push("/registry");
-  };
-
-
   const openAndSendMessage = (target: string) => {
     // React apps append /app to their URLs - we need to do the same in order to persist a handler
     const iframeRef = React.createRef<HTMLIFrameElement>();
@@ -84,8 +74,9 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
     const imageUrl = "/images/" + option.icon;
     return <>
       <a className="app-link"
+         key={option.title}
          onClick={handleOptionClick(option)}>
-        <img src={imageUrl}/>
+        <img src={imageUrl} alt=""/>
         <span className="title">{option.title}</span>
         <span className="description">{option.subTitle}</span>
       </a>
@@ -103,7 +94,14 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
 
   const handleOptionClick = (option: AppOption) => () => {
     if (option.route) {
-      history.push("/registry");
+      switch (option.route) {
+        case "/registry":
+          history.push("/registry");
+          break;
+        case "/transactionHistory":
+          history.push("/transactionHistory");
+          break;
+      }
     } else if (option.url) {
       if (store.getState().session.token) {
         openAndSendMessage(option.url);
@@ -114,20 +112,9 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
   }
   const hubOptions = _.map(appConfig.actions, createHubOption);
   return (
-    <div className="home-page">
+    <div className="home-page" >
       {hubOptions}
       {renderModal()}
-      {appConfig.actions.map(x => {
-        return <div className="app-link"
-                    onClick={() => {
-                      if (x.url) {
-                        openAndSendMessage(x.url);
-                      }
-                    }}>
-          <span className="title">{x.title}</span>
-          <span className="description">{x.subTitle}</span>
-        </div>
-      })}
     </div>
   );
 }

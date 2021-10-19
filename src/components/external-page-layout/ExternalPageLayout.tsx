@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./ExternalPageLayout.scss";
 import HomePage from "./pages/HomePage";
-import FrameworkHost from "./pages/frameworks/FrameworkHost";
+import RegistryPage from "./pages/registry-page/RegistryPage";
+import TransactionHistory from "./pages/transaction-history-page/TransactionHistoryPage";
 
 export default class ExternalPageLayout extends Component {
   componentDidMount() {
@@ -18,7 +19,8 @@ export default class ExternalPageLayout extends Component {
       <div className="external-page-layout">
         <Switch>
           <Route exact path={`/home`} component={HomePage} />
-          <Route exact path={`/registry`} component={FrameworkHost} />
+          <Route exact path={`/registry`} component={RegistryPage} />
+          <Route exact path={`/transactionHistory`} component={TransactionHistory} />
         </Switch>
       </div>
     );
