@@ -8,5 +8,15 @@
   "credentialDetails": "Credential Details",
   "registrationEntries": "Registration Entries",
   "transactionHistory": "Transaction History",
-  "photoFailedToRender": "Photo failed to render."
+  "photoFailedToRender": "Photo failed to render.",
+  "login": "Log in",
+  "logout": "Log out",
+  "tokenMessages": {
+    "silently": "Trying to get access token silently",
+    "popup": "Trying to get access token using a popup",
+    "failed": "Failed to get access token",
+    "succeeded": "Collected token!",
+    "noToken": "No authentication token was detected within your session.",
+    "enablePopups": "Please enable popups for this site and try logging in again."
+}
 }

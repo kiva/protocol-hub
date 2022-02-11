@@ -8,13 +8,11 @@ export enum SessionAction {
   CancelSignIn = 'SessionActionCancelSignIn',
   SignOut = 'SessionActionSignOut',
   SetAuthToken = 'SessionActionSetToken',
+  GetSession = "SessionActionGetSession"
 }
 
 export const requestSignIn = (email: string, password: string) =>
   asyncAction(async (dispatch: Dispatch) => {
-    // dispatch(startSignIn());
-    // const session = null;//await auth.signIn(email, password);
-    // dispatch(completeSignIn(session));
   }, cancelSignIn);
 
 export const startSignIn = () => ({

@@ -1,6 +1,10 @@
 export interface Constants {
     controllerUrlBase: string,
-    externalUrls: ExternalUrls
+    externalUrls: ExternalUrls,
+    OAuth2Config: {
+        domain: string,
+        clientId: string
+    }
 }
 
 interface ExternalUrls {
