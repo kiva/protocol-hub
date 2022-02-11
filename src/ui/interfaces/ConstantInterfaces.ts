@@ -1,6 +1,7 @@
 export interface Constants {
     controllerUrlBase: string,
-    externalUrls: ExternalUrls
+    externalUrls: ExternalUrls,
+    authorizationMethod: string
 }
 
 interface ExternalUrls {

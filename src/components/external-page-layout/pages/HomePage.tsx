@@ -19,6 +19,7 @@ type AppOption =
   }
 
 const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
+  debugger;
   const [modalBodyContent, setModalBodyContent] = React.useState<any>("");
   const [modalOpen, setModalOpen] = React.useState<any>(false);
 

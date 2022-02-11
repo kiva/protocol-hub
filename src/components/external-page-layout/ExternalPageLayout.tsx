@@ -21,6 +21,7 @@ export default class ExternalPageLayout extends Component {
           <Route exact path={`/home`} component={HomePage} />
           <Route exact path={`/registry`} component={RegistryPage} />
           <Route exact path={`/transactionHistory`} component={TransactionHistory} />
+          <Route exact path={`/callback`} component={HomePage} />
         </Switch>
       </div>
     );

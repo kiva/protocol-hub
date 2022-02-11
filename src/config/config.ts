@@ -1,6 +1,6 @@
 export const appConfig = {
-  tenant: '',
-  client: '',
+  tenant: 'kiva-protocol-standalone',
+  client: 'x1di5yZwGCAuydb3igLbJsY55cH4dUmA',
   logoUrl: '/images/logo.png',
   actions: [
     {
