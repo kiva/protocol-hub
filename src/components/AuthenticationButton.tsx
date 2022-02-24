@@ -1,9 +1,14 @@
 import LoginButton from "./login-button";
 import LogoutButton from "./logout-button";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAppSelector } from "hooks";
 
 const AuthenticationButton = () => {
-  const { isAuthenticated } = useAuth0();
+  const isAuthenticated = useAppSelector(state => {
+    if (state.session.token) {
+        return state.session.token;
+    }
+    return false;
+})
 
   return isAuthenticated ?
     <div className="appNavBar">

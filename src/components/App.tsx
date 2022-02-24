@@ -1,11 +1,21 @@
-import {FunctionComponent, useEffect} from "react";
+import React, {FunctionComponent} from "react";
 import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-dom";
 import ExternalPageLayout from "./external-page-layout/ExternalPageLayout";
 import './common/theme.scss';
 import AuthenticationButton from "./AuthenticationButton";
 import {appConfig} from "../config/config";
+import { useAppSelector } from "hooks";
+import { connect } from 'react-redux'
+import { StoreState } from "../redux/store-state";
 
-const App: FunctionComponent = () => {
+const App: FunctionComponent = (props) => {
+  const isAuthenticated = useAppSelector(state => {
+    if (state.session.token) {
+        return state.session.token;
+    }
+    return false;
+  });
+
   const getContent = () => {
     return (<div className="core-layout">
       <Router>
@@ -23,7 +33,6 @@ const App: FunctionComponent = () => {
       </Router>
     </div>);
   }
-  const isAuthenticated = false;
 
   return (
     <div>
@@ -45,4 +54,14 @@ const App: FunctionComponent = () => {
   );
 };
 
-export default App;
+function mapStateToProps(state: StoreState, props: any) {
+  return {
+      account: state.session.account,
+  };
+}
+
+function mapDispatchToProps(dispatch: any, props: any) {
+  return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

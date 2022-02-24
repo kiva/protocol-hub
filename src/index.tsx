@@ -1,34 +1,27 @@
 import ReactDOM from "react-dom";
 import App from "./components/App";
-import Auth0App from "./components/Auth0App";
 import "./components/common/theme.scss";
 import configureStore from "./redux/configureStore";
 import {getSession} from "./services/authentication";
 import {Session} from "./services/models/session";
-import Auth0ProviderWithHistory from "./components/Auth0ProviderWithHistory";
 import {BrowserRouter as Router} from "react-router-dom";
-import {CONSTANTS} from 'constants/constants';
+import { Provider } from "react-redux";
 
 export const store = configureStore({
   session: getSession() || ({} as Session),
 });
 
-switch(CONSTANTS.authorizationMethod) {
-  case "auth0":
-    ReactDOM.render(
-      <Router>
-        <Auth0ProviderWithHistory>
-          <Auth0App/>
-        </Auth0ProviderWithHistory>
-      </Router>,
-      document.getElementById("app")
-    );
-    break;
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch
 
-  default:
-    ReactDOM.render(
-      <App/>,
-      document.getElementById('app')
-    );
-    break;
-}
+
+ReactDOM.render(
+  <Router>
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  </Router>,
+  document.getElementById("app")
+);

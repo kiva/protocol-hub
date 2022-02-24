@@ -8,6 +8,7 @@ export enum SessionAction {
   CancelSignIn = 'SessionActionCancelSignIn',
   SignOut = 'SessionActionSignOut',
   SetAuthToken = 'SessionActionSetToken',
+  GetSession = "SessionActionGetSession"
 }
 
 export const requestSignIn = (email: string, password: string) =>
