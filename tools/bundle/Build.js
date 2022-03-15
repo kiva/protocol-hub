@@ -24,23 +24,28 @@ function writeTo(path, data, noJson) {
     });
 }
 
-function mergeEnvironments(configEnv, env) {
-    const conf = config.env[env];
+function mergeEnvironments(conf, env) {
+    if (!conf.env.hasOwnProperty(env)) return;
+    const targetEnv = conf.env[env];
 
     // Apply attributes from target `env` THAT HAVE NOT BEEN DEFINED IN CURRENT ENV into the target config
     // Priority is in index order i.e. if a config is defined at index 0 and 2, the value from index 0 will win
-    if (conf.inherits) {
-        inherit(conf.inherits, conf, configEnv);
-        delete conf.inherits;
+    if (targetEnv.inherits) {
+        inherit(targetEnv.inherits, targetEnv, conf.env);
+        delete targetEnv.inherits;
     }
 }
 
-function inherit(envArr, insertInto, conf) {
-    while (envArr.length) {
-        let frum = envArr.shift();
-        for (let k in conf[frum]) {
-            if (!insertInto.hasOwnProperty(k)) {
-                insertInto[k] = conf[frum][k];
+function inherit(inheritedEnvs, targetEnv, configEnvironment) {
+    while (inheritedEnvs.length) {
+        let inheritedEnv = inheritedEnvs.shift();
+        if (configEnvironment[inheritedEnv].hasOwnProperty('inherits')) {
+            inherit(configEnvironment[inheritedEnv].inherits, configEnvironment[inheritedEnv], configEnvironment);
+            delete configEnvironment[inheritedEnv].inherits;
+        }
+        for (let k in configEnvironment[inheritedEnv]) {
+            if (!targetEnv.hasOwnProperty(k)) {
+                targetEnv[k] = configEnvironment[inheritedEnv][k];
             }
         }
     }
