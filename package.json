@@ -9,7 +9,8 @@
     "react-start": "PORT=1409 react-scripts start",
     "statFileGen": "sh ./tools/bundle/generate_static_files.sh ${CONF_FILE:-config/kiva.json} ${BUILD_ENV:-}",
     "test": "react-scripts test",
-    "deploy": "npm run build && ced push"
+    "deploy": "npm run build && ced push",
+    "simulator": "swrl"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,6 +30,7 @@
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
+    "@kiva/fingerprint-api-simulator": "^0.1.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/data-grid": "^4.0.0-alpha.35",
     "@material-ui/icons": "^4.11.2",
