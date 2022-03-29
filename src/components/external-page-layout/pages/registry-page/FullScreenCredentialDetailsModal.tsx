@@ -24,56 +24,7 @@ interface PIIdefinition {
   dataType?: string,
 }
 
-const PII: PIImap =  {
-  "id": {
-    "name": "Credential ID",
-    "dataType": "text"
-  },
-  "firstName": {
-    "name": "First Name",
-    "dataType": "text"
-  },
-  "lastName": {
-    "name": "Last Name",
-    "dataType": "text"
-  },
-  "companyEmail": {
-    "name": "Company Email",
-    "dataType": "text"
-  },
-  "currentTitle": {
-    "name": "Current Title",
-    "dataType": "text"
-  },
-  "team": {
-    "name": "Team",
-    "dataType": "text"
-  },
-  "hireDate": {
-    "name": "Hire Date",
-    "dataType": "date"
-  },
-  "officeLocation": {
-    "name": "Office Location",
-    "dataType": "text"
-  },
-  "phoneNumber": {
-    "name": "Phone Number",
-    "dataType": "text"
-  },
-  "type": {
-    "name": "Type",
-    "dataType": "text"
-  },
-  "endDate": {
-    "name": "End Date",
-    "dataType": "date"
-  },
-  "createdAt": {
-    "name": "Created At",
-    "dataType": "text"
-  }
-};
+const PII: PIImap =  CONSTANTS.credentialKeyMap;
 
 interface ModalContentProps {
   credentialData: any,

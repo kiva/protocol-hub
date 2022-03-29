@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import React, {FunctionComponent} from "react";
+import React, { FunctionComponent, useState, createRef } from "react";
 import "./HomePage.scss";
 import {RouteComponentProps, withRouter} from 'react-router-dom';
-import {appConfig} from '../../../config/config';
+import {CONSTANTS} from '../../../constants/constants';
 import FullPageModal from "../FullPageModal";
 import {store} from "../../../index";
 import Listen from "../../../utils/Listen";
 import _ from "lodash";
 
-type AppOption =
+export type AppOption =
   {
     icon: string;
     title: string;
@@ -19,12 +19,12 @@ type AppOption =
   }
 
 const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
-  const [modalBodyContent, setModalBodyContent] = React.useState<any>("");
-  const [modalOpen, setModalOpen] = React.useState<any>(false);
+  const [modalBodyContent, setModalBodyContent] = useState<any>("");
+  const [modalOpen, setModalOpen] = useState<any>(false);
 
   const openAndSendMessage = (target: string) => {
     // React apps append /app to their URLs - we need to do the same in order to persist a handler
-    const iframeRef = React.createRef<HTMLIFrameElement>();
+    const iframeRef = createRef<HTMLIFrameElement>();
     const iframe = () => {
       return (
         <iframe
@@ -34,7 +34,7 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
           onLoad={handleIframeOnload}
           ref={iframeRef}
           className="action-workflow-iframe"
-          src={target + '/app'}>
+          src={target}>
         </iframe>
       )
     }
@@ -53,7 +53,6 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
         // Setting up a listener for a response from the opened window
         // If the data satisfies our requirements, we clear the "poll" interval
         Listen(window, "message", e => {
-          console.log(e);
           if (e.data.allSet) {
             clearInterval(poll);
             w!.postMessage({
@@ -73,8 +72,9 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
   const createHubOption = (option: AppOption) => {
     const imageUrl = "/images/" + option.icon;
     return <>
-      <a className="app-link"
+      <a data-testid={option.title.toLowerCase().split(' ').join('_')}
          key={option.title}
+         className="app-link"
          onClick={handleOptionClick(option)}>
         <img src={imageUrl} alt=""/>
         <span className="title">{option.title}</span>
@@ -87,6 +87,7 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
       return (<FullPageModal
         modalAnchorEl="home-page"
         body={modalBodyContent}
+        openState={[modalOpen, setModalOpen]}
       ></FullPageModal>)
     }
     return
@@ -106,13 +107,13 @@ const HomePage: FunctionComponent<RouteComponentProps> = ({history}) => {
       if (store.getState().session.token) {
         openAndSendMessage(option.url);
       } else {
-        alert("No authentication token was detected within your session.\nPlease disable popups for this site and try logging in again.");
+        alert("No authentication token was detected within your session.\nPlease disable popup blocking for this site and try logging in again.");
       }
     }
   }
-  const hubOptions = _.map(appConfig.actions, createHubOption);
+  const hubOptions = _.map(CONSTANTS.actions, createHubOption);
   return (
-    <div className="home-page" >
+    <div className="home-page">
       {hubOptions}
       {renderModal()}
     </div>

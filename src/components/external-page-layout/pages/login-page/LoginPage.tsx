@@ -19,7 +19,7 @@ const LoginPage: FunctionComponent<Props> = ({}) => {
                onChange={(e) => setUsername(e.target.value)}/>
         <input type="password"
                value={password}
-               onChange={(e) => setUsername(e.target.value)}/>
+               onChange={(e) => setPassword(e.target.value)}/>
         <Button>Sign In</Button>
       </div>
     </div>
