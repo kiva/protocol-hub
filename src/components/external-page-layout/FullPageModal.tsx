@@ -19,7 +19,7 @@ const ModalContent: FunctionComponent<ModalContentProps> = (props) => {
     return (
       <Grid
           container
-          justify="center"
+          justifyContent="center"
         >
           <Grid item xs={12}>
             <DialogTitle>
@@ -39,11 +39,12 @@ const ModalContent: FunctionComponent<ModalContentProps> = (props) => {
 interface Props {
   modalAnchorEl: any,
   title?: any,
-  body: any
+  body: any,
+  openState: any[]
 }
 
 const FullPageModal: FunctionComponent<Props> = React.forwardRef((props, ref) => {
-  const [isModalOpen, setModalOpen] = React.useState(true);
+  const [isModalOpen, setModalOpen] = props.openState;
 
   const closeModal = () => {
     setModalOpen(false);
@@ -65,7 +66,7 @@ const FullPageModal: FunctionComponent<Props> = React.forwardRef((props, ref) =>
           <AppBar>
             <Grid
               container
-              justify="flex-end"
+              justifyContent="flex-end"
               direction="row"
             >
               <Grid item>
