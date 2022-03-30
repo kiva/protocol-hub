@@ -35,7 +35,7 @@ const App: FunctionComponent = (props) => {
     const parent = window.opener || window.parent;
     parent.postMessage({
         message: 'deliverResult',
-        result: window.location.hash
+        result: window.location.search
     }, "*");
     return (<div></div>);
   }

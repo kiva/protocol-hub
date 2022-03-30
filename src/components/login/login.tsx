@@ -44,7 +44,7 @@ const Login: FunctionComponent<LoginProps> = (props) => {
   const onSuccess = (response:any) => {
     store.dispatch({
       type: SessionAction.SetAuthToken,
-      token: response.access_token
+      token: response.code
     })
     window.localStorage.setItem('access_token', response.access_token);
     console.log(I18n.getKey('tokenMessages.succeeded'));
@@ -67,7 +67,7 @@ const Login: FunctionComponent<LoginProps> = (props) => {
   }
 
   const getAuthConfig = () => {
-    const response_type = 'token';
+    const response_type = 'code';
     const client_id = CONSTANTS.OAuth2Config.clientId;
     const redirect_uri = `${window.location.origin}/callback`;
     const payload = {
