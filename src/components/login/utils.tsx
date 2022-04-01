@@ -1,6 +1,5 @@
 export function toParams(query: any) {
   const q = query.replace(/^(\?|#)/, '');
-
   return q.split('&').reduce((values: any, param: any) => {
     const [key, value] = param.split('=');
 
